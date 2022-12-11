@@ -460,6 +460,12 @@ class ScriptTreeGenerator {
                     left: this.descendInputOfBlock(block, 'NUM1'),
                     right: this.descendInputOfBlock(block, 'NUM2')
                 };
+            case 'operator_nand':
+                return {
+                    kind: 'op.nand',
+                    left: this.descendInputOfBlock(block, 'OPERAND1'),
+                    right: this.descendInputOfBlock(block, 'OPERAND2')
+                };
             case 'operator_not':
                 return {
                     kind: 'op.not',
@@ -549,7 +555,12 @@ class ScriptTreeGenerator {
                     left: this.descendInputOfBlock(block, 'NUM1'),
                     right: this.descendInputOfBlock(block, 'NUM2')
                 };
-
+            case 'operator_xor':
+                return {
+                    kind: 'op.xor',
+                    left: this.descendInputOfBlock(block, 'OPERAND1'),
+                    right: this.descendInputOfBlock(block, 'OPERAND2')
+                };
             case 'sensing_answer':
                 return {
                     kind: 'sensing.answer'

@@ -580,6 +580,8 @@ class JSGenerator {
         case 'op.multiply':
             // Needs to be marked as NaN because Infinity * 0 === NaN
             return new TypedInput(`(${this.descendInput(node.left).asNumber()} * ${this.descendInput(node.right).asNumber()})`, TYPE_NUMBER_NAN);
+        case 'op.nand':
+            return new TypedInput(`(!(${this.descendInput(node.left).asBoolean()} && ${this.descendInput(node.right).asBoolean()}))`, TYPE_BOOLEAN);
         case 'op.not':
             return new TypedInput(`!${this.descendInput(node.operand).asBoolean()}`, TYPE_BOOLEAN);
         case 'op.or':
@@ -604,9 +606,10 @@ class JSGenerator {
             return new TypedInput(`(${this.descendInput(node.left).asNumber()} - ${this.descendInput(node.right).asNumber()})`, TYPE_NUMBER_NAN);
         case 'op.tan':
             return new TypedInput(`tan(${this.descendInput(node.value).asNumber()})`, TYPE_NUMBER);
+        case 'op.xor':
+            return new TypedInput(`(${this.descendInput(node.left).asBoolean()} || ${this.descendInput(node.right).asBoolean()} && !(${this.descendInput(node.left).asBoolean()} && ${this.descendInput(node.right).asBoolean()}))`, TYPE_BOOLEAN);
         case 'op.10^':
             return new TypedInput(`(10 ** ${this.descendInput(node.value).asNumber()})`, TYPE_NUMBER);
-
         case 'sensing.answer':
             return new TypedInput(`runtime.ext_scratch3_sensing._answer`, TYPE_STRING);
         case 'sensing.colorTouchingColor':
