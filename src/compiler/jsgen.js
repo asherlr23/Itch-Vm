@@ -607,7 +607,7 @@ class JSGenerator {
         case 'op.tan':
             return new TypedInput(`tan(${this.descendInput(node.value).asNumber()})`, TYPE_NUMBER);
         case 'op.xor':
-            return new TypedInput(`(${this.descendInput(node.left).asBoolean()} || ${this.descendInput(node.right).asBoolean()} && !(${this.descendInput(node.left).asBoolean()} && ${this.descendInput(node.right).asBoolean()}))`, TYPE_BOOLEAN);
+            return new TypedInput(`(${this.descendInput(node.left).asBoolean()} != ${this.descendInput(node.right).asBoolean()})`, TYPE_BOOLEAN);
         case 'op.10^':
             return new TypedInput(`(10 ** ${this.descendInput(node.value).asNumber()})`, TYPE_NUMBER);
         case 'sensing.answer':
