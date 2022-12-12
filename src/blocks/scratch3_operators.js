@@ -134,7 +134,7 @@ class Scratch3OperatorsBlocks {
     regexp (args) {
         try {
             const expression = new RegExp(String(args.REGEXP), "")
-            return expression.test(args.STRING)
+            return expression.test(String(args.STRING))
         } catch {
             return false
         }
@@ -143,7 +143,7 @@ class Scratch3OperatorsBlocks {
     regexpg (args) {
         try {
             const expression = new RegExp(String(args.REGEXP), "g")
-            return expression.test(args.STRING)
+            return expression.test(String(args.STRING))
         } catch {
             return false
         }

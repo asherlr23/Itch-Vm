@@ -594,6 +594,10 @@ class JSGenerator {
                 return new TypedInput(`randomFloat(${this.descendInput(node.low).asNumber()}, ${this.descendInput(node.high).asNumber()})`, TYPE_NUMBER);
             }
             return new TypedInput(`runtime.ext_scratch3_operators._random(${this.descendInput(node.low).asUnknown()}, ${this.descendInput(node.high).asUnknown()})`, TYPE_NUMBER);
+        case 'op.regexp':
+            return new TypedInput(`new RegExp(${this.descendInput(node.right).asString()},"").test(${this.descendInput(node.left).asString()})`, TYPE_BOOLEAN);
+        case 'op.regexpg':
+            return new TypedInput(`new RegExp(${this.descendInput(node.right).asString()},"g").test(${this.descendInput(node.left).asString()})`, TYPE_BOOLEAN);
         case 'op.round':
             return new TypedInput(`Math.round(${this.descendInput(node.value).asNumber()})`, TYPE_NUMBER);
         case 'op.sin':

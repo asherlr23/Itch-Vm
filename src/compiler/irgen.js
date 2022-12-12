@@ -552,6 +552,12 @@ class ScriptTreeGenerator {
             case 'operator_regexp':
                 return {
                     kind: 'op.regexp',
+                    left: this.descendInputOfBlock(block, 'STRING'),                    
+                    right: this.descendInputOfBlock(block, 'REGEXP')
+                };
+            case 'operator_regexpg':
+                return {
+                    kind: 'op.regexpg',
                     left: this.descendInputOfBlock(block, 'STRING'),
                     right: this.descendInputOfBlock(block, 'REGEXP')
                 };
