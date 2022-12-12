@@ -33,6 +33,8 @@ class Scratch3OperatorsBlocks {
             operator_letter_of: this.letterOf,
             operator_length: this.length,
             operator_contains: this.contains,
+            operator_regexp: this.regexp,
+            operator_regexpg: this.regexpg,
             operator_mod: this.mod,
             operator_round: this.round,
             operator_mathop: this.mathop,
@@ -127,6 +129,24 @@ class Scratch3OperatorsBlocks {
             return Cast.toString(string).toLowerCase();
         };
         return format(args.STRING1).includes(format(args.STRING2));
+    }
+
+    regexp (args) {
+        try {
+            const expression = new RegExp(String(args.REGEXP), "")
+            return expression.test(args.STRING)
+        } catch {
+            return false
+        }
+    }
+
+    regexpg (args) {
+        try {
+            const expression = new RegExp(String(args.REGEXP), "g")
+            return expression.test(args.STRING)
+        } catch {
+            return false
+        }
     }
 
     mod (args) {

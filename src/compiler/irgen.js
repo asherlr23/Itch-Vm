@@ -549,6 +549,12 @@ class ScriptTreeGenerator {
                     kind: 'op.round',
                     value: this.descendInputOfBlock(block, 'NUM')
                 };
+            case 'operator_regexp':
+                return {
+                    kind: 'op.regexp',
+                    left: this.descendInputOfBlock(block, 'STRING'),
+                    right: this.descendInputOfBlock(block, 'REGEXP')
+                };
             case 'operator_subtract':
                 return {
                     kind: 'op.subtract',
