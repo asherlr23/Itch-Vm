@@ -50,7 +50,7 @@ class typeScratch {
             menus: {
                 types: {
                     acceptReporters: false,
-                    items: 'getTypes'
+                    items: 'getTypeNames'
                 }
             }
         };
