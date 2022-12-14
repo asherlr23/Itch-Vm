@@ -59,15 +59,15 @@ class typeScratch {
     types = {
         "Number": {
             fixed: true,
-            function: () => {}
+            function: (value) => {Number(value) == value}
         },
         "String": {
             fixed: true,
-            function: () => {}
+            function: (value) => {false /* will figure it out soon */}
         },
         "Null": {
             fixed: true,
-            function: () => {}
+            function: (value) => {value !== null || value !== undefined}
         },
     }
 
@@ -76,7 +76,7 @@ class typeScratch {
     }
 
     getType(args, util) {
-        return this.types[String(args.TYPE)] || "Null"
+        return this.types[String(args.TYPE)] !== undefined ? String(args.TYPE) : "Null"
     }
 }
 
