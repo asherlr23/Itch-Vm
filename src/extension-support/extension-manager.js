@@ -57,6 +57,10 @@ const builtinExtensions = {
     jwStructs: () => require("../extensions/jw_structs"),
     // text: text stuff
     Text: () => require("../extensions/text"),
+
+
+    //itch extensions
+    typescratch: () => require("../extensions/typescratch")
 };
 
 // CCW limited
