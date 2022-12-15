@@ -96,7 +96,7 @@ class typeScratch {
     }
 
     getTypeNames() {
-        return Object.keys(this.types).filter((value) => value.show === true)
+        return Object.keys(this.types).filter((value) => this.types[value].show === true)
     }
 
     getType(args, util) {
