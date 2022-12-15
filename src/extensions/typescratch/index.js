@@ -45,6 +45,22 @@ class typeScratch {
                             menu: "types"
                         },
                     }
+                },
+                {
+                    opcode: 'typeof',
+                    text: formatMessage({
+                        id: 'typescratch.blocks.typeof',
+                        default: 'typeof [STRING]',
+                        description: 'Get a type.'
+                    }),
+                    disableMonitor: true,
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        STRING: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "string",
+                        },
+                    }
                 }
             ],
             menus: {
@@ -59,24 +75,41 @@ class typeScratch {
     types = {
         "Number": {
             fixed: true,
-            function: (value) => {Number(value) == value}
+            show: true,
+            compare: (value) => {Number(value) == value}
         },
         "String": {
             fixed: true,
-            function: (value) => {false /* will figure it out soon */}
+            show: true,
+            compare: (value) => {Number(value) != value && String(value) == value}
         },
         "Null": {
             fixed: true,
-            function: (value) => {value !== null || value !== undefined}
+            show: true,
+            compare: (value) => {value !== null || value !== undefined}
+        },
+        "Unknown": {
+            fixed: true,
+            show: false,
+            compare: (value) => {false}
         },
     }
 
     getTypeNames() {
-        return Object.keys(this.types)
+        return Object.keys(this.types).filter((value) => value.show === true)
     }
 
     getType(args, util) {
         return this.types[String(args.TYPE)] !== undefined ? String(args.TYPE) : "Null"
+    }
+
+    typeof(args, util) {
+        for (const name of Object.keys(this.types)) {
+            if (this.types[name].compare(args.STRING)) {
+                return name
+            }
+        }
+        return "Unknown"
     }
 }
 
