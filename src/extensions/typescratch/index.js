@@ -105,7 +105,7 @@ class typeScratch {
 
     typeof(args, util) {
         for (const name of Object.keys(this.types)) {
-            if (this.types[name].compare(args.STRING)) {
+            if (this.types[name].compare(args.STRING) == true) {
                 return name
             }
         }
