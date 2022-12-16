@@ -20,7 +20,7 @@ class Scratch3MotionBlocks {
             motion_movesteps: this.moveSteps,
             motion_gotoxy: this.goToXY,
             motion_goto: this.goTo,
-            motion_distancexy: this.distanceToXY,
+            motion_distancetoxy: this.distanceToXY,
             motion_turnright: this.turnRight,
             motion_turnleft: this.turnLeft,
             motion_pointindirection: this.pointInDirection,
