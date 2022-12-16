@@ -76,22 +76,22 @@ class typeScratch {
         "Number": {
             fixed: true,
             show: true,
-            compare: (value) => {Number(value) == value}
+            compare: (value) => {return Number(value) == value}
         },
         "String": {
             fixed: true,
             show: true,
-            compare: (value) => {Number(value) != value && String(value) == value}
+            compare: (value) => {return Number(value) != value && String(value) == value}
         },
         "Null": {
             fixed: true,
             show: true,
-            compare: (value) => {value !== null || value !== undefined}
+            compare: (value) => {return value !== null || value !== undefined}
         },
         "Unknown": {
             fixed: true,
             show: false,
-            compare: (value) => {false}
+            compare: (value) => {return false}
         },
     }
 
