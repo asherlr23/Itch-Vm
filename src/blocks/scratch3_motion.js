@@ -20,6 +20,7 @@ class Scratch3MotionBlocks {
             motion_movesteps: this.moveSteps,
             motion_gotoxy: this.goToXY,
             motion_goto: this.goTo,
+            motion_distancexy: this.distanceToXY,
             motion_turnright: this.turnRight,
             motion_turnleft: this.turnLeft,
             motion_pointindirection: this.pointInDirection,
@@ -104,6 +105,10 @@ class Scratch3MotionBlocks {
         if (targetXY) {
             util.target.setXY(targetXY[0], targetXY[1]);
         }
+    }
+
+    distanceToXY (args, util) {
+        return Math.sqrt((Number(args.X)-util.target.x)**2+(Number(args.Y)-util.target.y)**2)
     }
 
     turnRight (args, util) {

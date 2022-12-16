@@ -288,6 +288,7 @@ class Scratch3LooksBlocks {
             looks_sayforsecs: this.sayforsecs,
             looks_think: this.think,
             looks_thinkforsecs: this.thinkforsecs,
+            looks_clearspeech: this.clearspeech,
             looks_show: this.show,
             looks_hide: this.hide,
             looks_hideallsprites: () => {}, // legacy no-op block
@@ -370,6 +371,10 @@ class Scratch3LooksBlocks {
                 resolve();
             }, 1000 * args.SECS);
         });
+    }
+
+    clearspeech (args, util) {
+        this._say("", util.target);
     }
 
     show (args, util) {
