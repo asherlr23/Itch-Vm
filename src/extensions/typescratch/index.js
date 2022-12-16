@@ -100,7 +100,7 @@ class typeScratch {
     }
 
     getType(args, util) {
-        return this.types[String(args.TYPE)] !== undefined ? String(args.TYPE) : "Null"
+        return this.types[String(args.TYPE)] !== undefined ? String(args.TYPE) : "Unknown"
     }
 
     typeof(args, util) {
