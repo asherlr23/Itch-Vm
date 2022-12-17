@@ -24,7 +24,11 @@ class typeScratch {
     getInfo() {
         return {
             id: 'typescratch',
-            name: 'TypeScratch',
+            name: formatMessage({
+                id: 'typeScratch',
+                defaultMessage: 'Typescratch',
+                description: 'A Scratch extension for using datatypes'
+            }),
             //blockIconURI: blockIconURI,
             color1: '#3178c6',
             color2: '#235a97',
@@ -60,6 +64,26 @@ class typeScratch {
                             type: ArgumentType.STRING,
                             defaultValue: "string",
                         },
+                    }
+                },
+                {
+                    opcode: 'checktype',
+                    text: formatMessage({
+                        id: 'typescratch.blocks.checktype',
+                        default: 'is [STRING] a valid [TYPE]?',
+                        description: 'Check if a string is a certain type.'
+                    }),
+                    disableMonitor: true,
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        STRING: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "string",
+                        },
+                        TYPE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "string",
+                        }
                     }
                 }
             ],
@@ -110,6 +134,14 @@ class typeScratch {
             }
         }
         return "Unknown"
+    }
+    checktype(args, util) {
+        let stringType = typeof(args.STRING)
+        if (stringType == args.TYPE) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
